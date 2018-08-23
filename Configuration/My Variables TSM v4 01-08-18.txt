@@ -2,11 +2,11 @@
 Variables:
 *********
 
-    marketmax        |  check(dbmarket - 10g, 800% dbmarket, 500% dbmarket)
+    marketmax        |  max(ifgt(dbmarket, dbregionmarketavg, 80% dbmarket, 80% dbregionmarketavg), 80% avg(crafting, dbmarket, dbregionmarketavg))
 -------------------------------------------------------------------------------------
-    marketmin        |  check(dbmarket - 1g, 80% dbmarket, 50% dbmarket)
+    marketmin        |  max(ifgt(dbmarket, dbregionmarketavg, 200% dbmarket, 200% dbregionmarketavg), 200% avg(crafting, dbmarket, dbregionmarketavg))
 -------------------------------------------------------------------------------------
-    marketnor        |  150% dbmarket
+    marketnor        |  max(ifgt(dbmarket, dbregionmarketavg, 120% dbmarket, 80% dbregionmarketavg), 120% avg(crafting, dbmarket, dbregionmarketavg))
 -------------------------------------------------------------------------------------
     petfinmax        |  check(dbregionmarketavg - 1500g, 800% dbregionmarketavg + 5500g, 500% dbregionmarketavg + 5500g)
 -------------------------------------------------------------------------------------
@@ -26,11 +26,11 @@ Variables:
 -------------------------------------------------------------------------------------
     tcgnor           |  150% dbregionmarketavg
 -------------------------------------------------------------------------------------
-                     |  
+    craftimin        |  max(iflt(crafting, dbmarket, 125% crafting, avg(dbregionhistorical, dbglobalhistorical)), ifgt(dbmarket, crafting, 80% dbmarket, 80% dbregionmarketavg), 80% avg(crafting, dbmarket, dbregionmarketavg))
 -------------------------------------------------------------------------------------
-                     |  
+    craftimax        |  max(iflt(crafting, dbmarket, 200% crafting, 200% avg(dbregionhistorical, dbglobalhistorical)), ifgt(dbmarket, crafting, 200% dbmarket, 200% dbregionmarketavg), 200% avg(crafting, dbmarket, dbregionmarketavg))
 -------------------------------------------------------------------------------------
-                     |  
+    craftinor        |  max(iflt(crafting, dbmarket, 150% crafting, 150% avg(dbregionhistorical, dbglobalhistorical)), ifgt(dbmarket, crafting, 150% dbmarket, 150% dbregionmarketavg), 150% avg(crafting, dbmarket, dbregionmarketavg))
 -------------------------------------------------------------------------------------
                      |  
 -------------------------------------------------------------------------------------
