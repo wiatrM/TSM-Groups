@@ -1,0 +1,95 @@
+Macros:
+------
+(Tested) Working on WoW 8.0.1
+
+Hide Chat Frame (Without Buttons)
+---------------------------------
+
+/run _CHATHIDE=not _CHATHIDE for i=1,NUM_CHAT_WINDOWS do for _,v in pairs{"","Tab"}do local f=_G["ChatFrame"..i..v]if _CHATHIDE then f.v=f:IsVisible()end f.ORShow=f.ORShow or f.Show f.Show=_CHATHIDE and f.Hide or f.ORShow if f.v then f:Show()end end end
+
+
+Change Character Specs:  [/run SetSpecialization(#)]
+-----------------------
+
+/equipset Intel
+/run SetSpecialization(1)
+
+
+
+
+
+
+
+
+
+(Untested) Unknown if works:    Careful might harm your UI
+----------------------------
+
+ (Untested)
+/run if ChatFrame1:IsShown() then ChatFrame1:Hide() else ChatFrame1:Show() end
+
+(Untested)
+Hide Code:
+local chat = DEFAULT_CHAT_FRAME
+chat:SetScript("OnShow", chat.Hide)
+chat:Hide()
+
+(Untested)
+Show Code
+Code:
+local chat = DEFAULT_CHAT_FRAME
+chat.OnShow = nil
+chat:Show()
+
+(Untested)
+/script if ChatFrame1:IsShown() then ChatFrame1:Hide(); ChatFrame2:Hide(); else ChatFrame1:Show(); ChatFrame2:Show(); end
+
+Hide Social Buttons:(Untested)
+--------------------
+
+FriendMicroButton:Hide()
+ChatFrameMenuButton:Hide()
+
+Hide Quests
+/run local n=ObjectiveTrackerFrame if n:IsVisible()then n:Hide();else n:Show();end
+Hide Minimap
+/run local m=MinimapCluster if m:IsShown()then m:Hide()else m:Show();end
+Hide Multibar
+/run local o=MultiBarRight if o:IsShown()then o:Hide()else o:Show();end
+/run local p=MultiBarLeft if p:IsShown()then p:Hide()else p:Show();end
+Hide Friends
+/run local q=FriendsMicroButton if q:IsShown()then q:Hide()else q:Show();end
+Hide Chat Buttons
+/run local r=ChatFrameMenuButton if r:IsShown()then r:Hide()else r:Show();end
+
+
+
+
+/run if not IsMounted() then local g,f,s,x={g,g,g},{f,f,f},{s,s,s},strfind(GetMapInfo(),"Vashj") local t=(x and IsSwimming()) and s or (IsFlyableArea() and not IsShiftKeyDown()) and f or g CallCompanion("MOUNT",t[random(#t)]) end 
+/dismount
+
+
+
+
+
+
+
+Sites:
+-------
+http://www.macroexplain.com/#none
+http://www.wowhead.com/forums&topic=128550
+http://es.wowhead.com/making-a-macro-commands-modifiers-warcraft-guide
+https://us.battle.net/forums/en/wow/topic/16200990425
+https://eu.battle.net/forums/en/wow/topic/3225373977
+https://wow.gamepedia.com/Macro_commands
+http://wowwiki.wikia.com/wiki/Making_a_macro
+https://eu.battle.net/forums/en/wow/topic/6160898728?page=2
+http://www.wowinterface.com/forums/showthread.php?t=14898
+https://www.reddit.com/r/wow/comments/4wx2su/help_with_hiding_chat_window_macro/
+https://www.mmo-champion.com/threads/2080316-Chat-Hide-Show-with-quot-Enter-quot
+https://addon.bool.no/
+http://www.wowhead.com/forums&topic=254355&p=4067149
+http://wowwiki.wikia.com/wiki/Useful_macros
+http://wowwiki.wikia.com/wiki/Mount_Macros
+https://us.battle.net/forums/en/wow/topic/20758236906
+https://wow.gamepedia.com/Useful_macros#Gear_By_iLevel
